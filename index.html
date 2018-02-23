@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端图片压缩</title>
+</head>
+<body>
+    <input type="file" id="imgFile" multiple>
+    <div>
+        压缩前：
+        <img src="" id="original" alt="">
+    </div>
+    <div>
+        压缩后：
+        <img src="" id="modified" alt="">
+    </div>
+    
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="minify_img_upload.js"></script>
+    
+    <script>
+        $(function () {
+            $("#imgFile").on("change", function(){
+                $.minifyImgUploade(this.files[0], function (imgData) {
+                    $("#modified").attr("src", imgData)
+                    // upload
+                    // $.post("server.php", { imgData: imgData }, function (res) {
+                    //     console.log(1);
+                    // }, 'json');
+                }, 0.2)
+            })
+        });
+    </script>
+</body>
+</html>
